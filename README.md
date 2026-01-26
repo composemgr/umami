@@ -1,41 +1,94 @@
 ## 👋 Welcome to umami 🚀
 
-Umami - Simple, privacy-focused analytics
+Simple, fast, privacy-focused web analytics
 
 ## 📋 Description
 
-Simple, privacy-focused analytics
+Simple, fast, privacy-focused web analytics
 
 ## 🚀 Services
 
-- **app**: Umami (`ghcr.io/umami-software/umami:postgresql-latest`)
+- **umami**: Main application
+
+### Infrastructure Components
+
+- **app**: Umami database
+
 
 ## 📦 Installation
 
-```shell
+### Option 1: Quick Install
+```bash
+curl -q -LSsf "https://raw.githubusercontent.com/composemgr/umami/main/docker-compose.yaml" -o compose.yml
+```
+
+### Option 2: Git Clone
+```bash
+git clone "https://github.com/composemgr/umami" ~/.local/srv/docker/umami
+cd ~/.local/srv/docker/umami
+docker compose up -d
+```
+
+### Option 3: Using composemgr
+```bash
 composemgr install umami
 ```
 
 ## 🔧 Configuration
 
+### Environment Variables
+
 ```shell
 TZ=America/New_York
-BASE_HOST_NAME=umami.example.com
 ```
+
+See `docker-compose.yaml` for complete list of configurable options.
 
 ## 🌐 Access
 
-- **Umami**: http://localhost:3000
+- **Web Interface**: http://172.17.0.1:3000
 
 ## 📂 Volumes
 
-- `./rootfs/data/umami` - Application data
+- `./rootfs/data/umami` - Data storage
 
 ## 🔐 Security
 
-- Change default passwords
-- Configure HTTPS with reverse proxy
-- Regular backups
+- Change all default passwords before deploying to production
+- Use strong secrets for all authentication tokens
+- Configure HTTPS using a reverse proxy (nginx, traefik, caddy)
+- Regularly update Docker images for security patches
+- Backup your data regularly
+
+## 🔍 Logging
+
+```shell
+docker compose logs -f app
+```
+
+## 🛠️ Management
+
+```bash
+# Start services
+docker compose up -d
+
+# Stop services
+docker compose down
+
+# Update to latest images
+docker compose pull && docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Restart services
+docker compose restart
+```
+
+## 📋 Requirements
+
+- Docker Engine 20.10+
+- Docker Compose V2+
 
 ## 🤝 Author
 
