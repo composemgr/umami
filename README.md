@@ -50,7 +50,7 @@ See `docker-compose.yaml` for complete list of configurable options.
 
 ## 📂 Volumes
 
-- `./rootfs/data/umami` - Data storage
+- `./volumes/data/umami` - Data storage
 
 ## 🔐 Security
 
