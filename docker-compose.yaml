@@ -20,7 +20,7 @@ services:
     ports:
       - '172.17.0.1:3000:3000'
     volumes:
-      - './rootfs/data/umami:/data'
+      - './volumes/data/umami:/data'
     networks:
       - umami
 
